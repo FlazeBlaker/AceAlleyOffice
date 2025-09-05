@@ -12,7 +12,7 @@ import AceAlleyOffice.AceAlleyOffice.Main.Main;
 import AceAlleyOffice.AceAlleyOffice.UI.PricingSettings;
 import AceAlleyOffice.AceAlleyOffice.UI.Dialogs.LoadingDialog;
 
-// --- THIS IS THE FIX: Changed from SwingWorker<Void, String> to SwingWorker<Main, String> ---
+
 public class AppInitializer extends SwingWorker<Main, String> {
 
     private final LoadingDialog splash;
@@ -27,7 +27,7 @@ public class AppInitializer extends SwingWorker<Main, String> {
         this.venueIdForSession = venueId;
     }
 
- // In AppInitializer.java
+
 
     @Override
     protected Main doInBackground() throws Exception {
@@ -35,18 +35,18 @@ public class AppInitializer extends SwingWorker<Main, String> {
         VenueConfig venueConfig = dataManager.fetchVenueConfig(venueIdForSession);
         if (venueConfig == null) { throw new Exception("Venue config not found for " + venueIdForSession); }
 
-        // --- NEW: Synchronously fetch pricing settings ---
+
         publish("Loading pricing settings...");
         PricingSettings settings = dataManager.fetchPricingSettings(venueIdForSession);
         if (settings == null) {
-            // If settings are not found, throw a fatal error
+
             throw new Exception("CRITICAL: Pricing settings not found for venue '" + venueIdForSession + "'");
         }
 
         publish("Building user interface...");
         CountDownLatch latch = new CountDownLatch(1);
         
-        // --- NEW: Pass the loaded settings to the Main constructor ---
+
         Main mainWindow = new Main(latch, dataManager, venueConfig, loggedInUser, venueIdForSession, settings);
         
         publish("Loading initial data...");
@@ -65,14 +65,14 @@ public class AppInitializer extends SwingWorker<Main, String> {
     
     @Override
     protected void done() {
-        splash.dispose(); // Close the loading screen
+        splash.dispose(); 
         try {
-            Main mainWindow = get(); // Get the fully loaded main window from the background task
+            Main mainWindow = get(); 
             
-            // Perform final, quick UI setup
+
             mainWindow.getUiBuilder().getDateChooser().setDate(new Date());
             
-            mainWindow.setVisible(true); // And show it
+            mainWindow.setVisible(true); 
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Failed to start the application after loading:\n" + e.getMessage(), "Application Error", JOptionPane.ERROR_MESSAGE);
