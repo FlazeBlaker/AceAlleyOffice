@@ -44,7 +44,7 @@ public class NotificationService {
         try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("credentials.json")) {
             if (inputStream == null) {
                 System.err.println("CRITICAL ERROR: credentials.json not found in resources folder.");
-                // In a real app, you might throw a runtime exception or handle this more gracefully
+                
                 return new JSONObject(); 
             }
             return new JSONObject(new JSONTokener(inputStream));
