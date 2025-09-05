@@ -1,0 +1,13 @@
+{
+  "admin_password": "admin123",
+  "ball_member": 20,
+  "ball_regular": 30,
+  "court_happy_hour_end": 15,
+  "court_happy_hour_start": 11,
+  "court_weekday_happy": 500,
+  "court_weekday_regular": 650,
+  "court_weekend": 750,
+  "racket_member": 30,
+  "racket_regular": 50,
+  "venue": "viman_nagar"
+}

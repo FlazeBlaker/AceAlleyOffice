@@ -1,0 +1,10 @@
+{
+  "venueName": "Ace Alley (Aundh)",
+  "numberOfCourts": 3,
+  "pricingStrategy": "DefaultPricing",
+  "features": {
+    "hasCafe": true,
+    "hasGearRental": true,
+    "hasMemberships": true
+  }
+}

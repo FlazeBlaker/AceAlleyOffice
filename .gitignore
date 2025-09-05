@@ -1,0 +1,23 @@
+# Compiled Java class files
+*.class
+
+# Compiled output folder from Maven
+target/
+
+# Log files
+*.log
+
+# IDE configuration files
+.idea/
+.project
+.classpath
+.settings/
+
+# Sensitive credential files
+credentials.json
+serviceAccountKey.json
+tokens/
+
+# Packaged files
+*.jar
+*.war
